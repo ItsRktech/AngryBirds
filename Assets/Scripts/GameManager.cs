@@ -9,7 +9,6 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-
     public int MaxNumberOfShots = 3;
     [SerializeField] private float _secondsToWaitBeforeDeathCheck = 3f;
     [SerializeField] private GameObject _restartScreenObject;
@@ -20,7 +19,11 @@ public class GameManager : MonoBehaviour
     private IconHandler _iconHandler;
 
     private List<Baddie> _baddies = new List<Baddie>();
-
+    public void QuitGame()
+    {
+        Debug.Log("Game is exiting...");
+        Application.Quit();
+    }
     private void Awake()
     {
         if (instance == null)
@@ -113,6 +116,15 @@ public class GameManager : MonoBehaviour
     public void NextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+    public void SelectLevel(int selectLevel)
+    {
+        SceneManager.LoadScene(selectLevel);
+
+    }
+    public void pause()
+    {
+        _restartScreenObject.SetActive(true);
     }
     #endregion
 }
