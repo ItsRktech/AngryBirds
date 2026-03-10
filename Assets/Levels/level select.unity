@@ -201,8 +201,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1384472300}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1384472302}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: SelectLevel
         m_Mode: 3
         m_Arguments:
@@ -333,8 +333,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1384472300}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1384472302}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: SelectLevel
         m_Mode: 3
         m_Arguments:
@@ -574,8 +574,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1384472300}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1384472302}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: SelectLevel
         m_Mode: 3
         m_Arguments:
@@ -706,8 +706,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1384472300}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1384472302}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: SelectLevel
         m_Mode: 3
         m_Arguments:
@@ -838,8 +838,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1384472300}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1384472302}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: SelectLevel
         m_Mode: 3
         m_Arguments:
@@ -1035,7 +1035,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1384472301}
-  - component: {fileID: 1384472300}
+  - component: {fileID: 1384472302}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -1043,23 +1043,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1384472300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1384472299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b582e66946282d84db153a3b5d7f44a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  MaxNumberOfShots: 3
-  _secondsToWaitBeforeDeathCheck: 3
-  _restartScreenObject: {fileID: 0}
-  _slingShotHandler: {fileID: 0}
-  _nextLevelImage: {fileID: 0}
 --- !u!4 &1384472301
 Transform:
   m_ObjectHideFlags: 0
@@ -1075,6 +1058,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1384472302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384472299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a26e7bcc3618174e940f184076fbcd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MenuManager
+  _pauseSound: {fileID: 8300000, guid: 536cd31145154234a9de925f8268f403, type: 3}
 --- !u!1 &1391001402
 GameObject:
   m_ObjectHideFlags: 0
@@ -1157,8 +1153,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1384472300}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1384472302}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: SelectLevel
         m_Mode: 3
         m_Arguments:
@@ -1289,8 +1285,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1384472300}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1384472302}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: SelectLevel
         m_Mode: 3
         m_Arguments:
@@ -1591,8 +1587,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1384472300}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1384472302}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: SelectLevel
         m_Mode: 3
         m_Arguments:

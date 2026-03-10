@@ -14,16 +14,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _restartScreenObject;
     [SerializeField] private SlingShotHandler _slingShotHandler;
     [SerializeField] private Image _nextLevelImage;
+    [SerializeField] private GameObject _pauseScreenObject;
     private int _usedNumberOfShots;
 
     private IconHandler _iconHandler;
 
     private List<Baddie> _baddies = new List<Baddie>();
-    public void QuitGame()
-    {
-        Debug.Log("Game is exiting...");
-        Application.Quit();
-    }
     private void Awake()
     {
         if (instance == null)
@@ -32,14 +28,24 @@ public class GameManager : MonoBehaviour
         }
 
         _iconHandler = FindAnyObjectByType<IconHandler>();
-
-        Baddie[] baddies = FindObjectsByType<Baddie>(FindObjectsSortMode.None);
-        for (int i = 0; i < baddies.Length; i++)
+        if (_iconHandler == null)
         {
-            _baddies.Add(baddies[i]);
+            Debug.LogError("GameManager: IconHandler not found in the scene!");
         }
 
-        _nextLevelImage.enabled = false; 
+        Baddie[] baddies = FindObjectsByType<Baddie>(FindObjectsSortMode.None);
+        if (baddies != null)
+        {
+            for (int i = 0; i < baddies.Length; i++)
+            {
+                _baddies.Add(baddies[i]);
+            }
+        }
+
+        if (_nextLevelImage != null)
+        {
+            _nextLevelImage.enabled = false;
+        }
     }
 
     public void UseShot()
@@ -117,14 +123,19 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+    public void pause()
+    {
+        _pauseScreenObject.SetActive(true);
+        _slingShotHandler.enabled = false;
+    }
     public void SelectLevel(int selectLevel)
     {
         SceneManager.LoadScene(selectLevel);
-
     }
-    public void pause()
+    public void resume()
     {
-        _restartScreenObject.SetActive(true);
+        _pauseScreenObject.SetActive(false);
+        _slingShotHandler.enabled = true;
     }
     #endregion
 }
