@@ -67,5 +67,9 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
+<<<<<<< HEAD
     "dotnet.defaultSolution": "AngryBirds.slnx"
+=======
+    "dotnet.defaultSolution": "angry_bird.slnx"
+>>>>>>> 6f27753242ebfe90985ffeb103a0154413d2eb79
 }
