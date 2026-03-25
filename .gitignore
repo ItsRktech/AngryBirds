@@ -23,6 +23,9 @@
 # Recordings can get excessive in size
 /[Rr]ecordings/
 
+Game/Angry Birds_Data/
+Game/Angry Birds_Data/*
+!.gitattributes
 # Uncomment this line if you wish to ignore the asset store tools plugin
 # /[Aa]ssets/AssetStoreTools*
 

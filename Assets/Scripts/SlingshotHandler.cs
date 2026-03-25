@@ -171,14 +171,18 @@ public class SlingShotHandler : MonoBehaviour
 
         float time = dist / _elasticDivider;
 
-        _elasticTransform.DOMove(_centerPosition.position, time).SetEase(_elasticCurve);
+        if (_elasticTransform != null && _centerPosition != null)
+        {
+            _elasticTransform.DOKill();
+            _elasticTransform.DOMove(_centerPosition.position, time).SetEase(_elasticCurve);
+        }
         StartCoroutine(AnimateSlingShotLines(_elasticTransform, time));
     }
 
     private IEnumerator AnimateSlingShotLines(Transform trans, float time)
     {
         float elapsedTime = 0f;
-        while (elapsedTime < time && elapsedTime < _maxAnimationTime)
+        while (elapsedTime < time && elapsedTime < _maxAnimationTime && trans != null)
         {
             elapsedTime += Time.deltaTime;
 
@@ -189,4 +193,12 @@ public class SlingShotHandler : MonoBehaviour
     }
 
     #endregion
+
+    private void OnDestroy()
+    {
+        if(_elasticTransform != null)
+        {
+            _elasticTransform.DOKill();
+        }
+    }
 }

@@ -29,6 +29,21 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        if (_slingShotHandler == null)
+        {
+            _slingShotHandler = FindAnyObjectByType<SlingShotHandler>();
+
+            if (_slingShotHandler == null)
+            {
+                Debug.LogError("GameManager: SlingShotHandler not found in the scene!");
+            }
+        }
 
         _iconHandler = FindAnyObjectByType<IconHandler>();
         if (_iconHandler == null)
@@ -118,15 +133,25 @@ public class GameManager : MonoBehaviour
     #region Win/Lose
     private void WinGame()
     {
-        _restartScreenObject.SetActive(true);
-        _slingShotHandler.enabled = false;
+        if (_restartScreenObject != null)
+            _restartScreenObject.SetActive(true);
+        else
+            Debug.LogError("Restart Screen Object is NULL");
 
-        //do we have more levels to load?
+        if (_slingShotHandler != null)
+            _slingShotHandler.enabled = false;
+        else
+            Debug.LogError("SlingShotHandler is NULL");
+
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         int maxLevels = SceneManager.sceneCountInBuildSettings;
+
         if (currentSceneIndex + 1 < maxLevels)
         {
-            _nextLevelImage.enabled = true;
+            if (_nextLevelImage != null)
+                _nextLevelImage.enabled = true;
+            else
+                Debug.LogError("Next Level Image is NULL");
         }
     }
 
