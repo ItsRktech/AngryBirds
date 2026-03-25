@@ -9,18 +9,20 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-
     public int MaxNumberOfShots = 3;
     [SerializeField] private float _secondsToWaitBeforeDeathCheck = 3f;
     [SerializeField] private GameObject _restartScreenObject;
+    [SerializeField] private GameObject _soundObject;
+    [SerializeField] private AudioSource _gameSound;
+    [SerializeField] private GameObject _nosoundObject;
     [SerializeField] private SlingShotHandler _slingShotHandler;
     [SerializeField] private Image _nextLevelImage;
+    [SerializeField] private GameObject _pauseScreenObject;
     private int _usedNumberOfShots;
 
     private IconHandler _iconHandler;
 
     private List<Baddie> _baddies = new List<Baddie>();
-
     private void Awake()
     {
         if (instance == null)
@@ -29,14 +31,24 @@ public class GameManager : MonoBehaviour
         }
 
         _iconHandler = FindAnyObjectByType<IconHandler>();
-
-        Baddie[] baddies = FindObjectsByType<Baddie>(FindObjectsSortMode.None);
-        for (int i = 0; i < baddies.Length; i++)
+        if (_iconHandler == null)
         {
-            _baddies.Add(baddies[i]);
+            Debug.LogError("GameManager: IconHandler not found in the scene!");
         }
 
-        _nextLevelImage.enabled = false; 
+        Baddie[] baddies = FindObjectsByType<Baddie>(FindObjectsSortMode.None);
+        if (baddies != null)
+        {
+            for (int i = 0; i < baddies.Length; i++)
+            {
+                _baddies.Add(baddies[i]);
+            }
+        }
+
+        if (_nextLevelImage != null)
+        {
+            _nextLevelImage.enabled = false;
+        }
     }
 
     public void UseShot()
@@ -88,8 +100,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void Sound()
+    {
+        if (!_soundObject.activeInHierarchy)
+        {
+            _soundObject.SetActive(true);
+            _nosoundObject.SetActive(false);
+            _gameSound.Play();
+        }
+        else
+        {
+            _gameSound.Stop();
+            _nosoundObject.SetActive(true);
+            _soundObject.SetActive(false);
+        }
+    }
     #region Win/Lose
-
     private void WinGame()
     {
         _restartScreenObject.SetActive(true);
@@ -113,6 +139,20 @@ public class GameManager : MonoBehaviour
     public void NextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+    public void pause()
+    {
+        _pauseScreenObject.SetActive(true);
+        _slingShotHandler.enabled = false;
+    }
+    public void SelectLevel(int selectLevel)
+    {
+        SceneManager.LoadScene(selectLevel);
+    }
+    public void resume()
+    {
+        _pauseScreenObject.SetActive(false);
+        _slingShotHandler.enabled = true;
     }
     #endregion
 }
