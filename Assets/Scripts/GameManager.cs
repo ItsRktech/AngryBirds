@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
     public int MaxNumberOfShots = 3;
     [SerializeField] private float _secondsToWaitBeforeDeathCheck = 3f;
     [SerializeField] private GameObject _restartScreenObject;
+    [SerializeField] private GameObject _soundObject;
+    [SerializeField] private AudioSource _gameSound;
+    [SerializeField] private GameObject _nosoundObject;
     [SerializeField] private SlingShotHandler _slingShotHandler;
     [SerializeField] private Image _nextLevelImage;
     [SerializeField] private GameObject _pauseScreenObject;
@@ -97,8 +100,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void Sound()
+    {
+        if (!_soundObject.activeInHierarchy)
+        {
+            _soundObject.SetActive(true);
+            _nosoundObject.SetActive(false);
+            _gameSound.Play();
+        }
+        else
+        {
+            _gameSound.Stop();
+            _nosoundObject.SetActive(true);
+            _soundObject.SetActive(false);
+        }
+    }
     #region Win/Lose
-
     private void WinGame()
     {
         _restartScreenObject.SetActive(true);

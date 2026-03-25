@@ -60,16 +60,13 @@
         "*.asset": "yaml",
         "*.meta": "yaml",
         "*.prefab": "yaml",
-        "*.unity": "yaml",
+        "*.unity": "yaml"
     },
     "explorer.fileNesting.enabled": true,
     "explorer.fileNesting.patterns": {
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-<<<<<<< HEAD
+    "AngryBirds.slnx=======dotnet.defaultSolution": "angry_bird.slnx>>>>>>>6f27753242ebfe90985ffeb103a0154413d2eb79",
     "dotnet.defaultSolution": "AngryBirds.slnx"
-=======
-    "dotnet.defaultSolution": "angry_bird.slnx"
->>>>>>> 6f27753242ebfe90985ffeb103a0154413d2eb79
 }
